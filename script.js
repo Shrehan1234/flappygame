@@ -17,6 +17,52 @@ let score_title = document.querySelector('.score_title');
 let game_state = 'Start';
 img.style.display = 'none';
 message.classList.add('messageStyle');
+// ... Your existing JavaScript code ...
+
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+function handleStartGame() {
+  if (game_state !== 'Play') {
+    document.querySelectorAll('.pipe_sprite').forEach((e) => {
+      e.remove();
+    });
+    img.style.display = 'block';
+    bird.style.top = '40vh';
+    game_state = 'Play';
+    message.innerHTML = '';
+    score_title.innerHTML = 'Score : ';
+    score_val.innerHTML = '0';
+    message.classList.remove('messageStyle');
+    play();
+  }
+}
+
+function handleFlap() {
+  bird_dy = -7.6; // Give the bird an upward velocity when it flaps
+  img.src = 'images/Bird-2.png';
+}
+
+function handleTouchEnd() {
+  img.src = 'images/Bird.png'; // Reset the bird's appearance when touch ends
+}
+
+const flapButton = document.getElementById('flapButton');
+flapButton.addEventListener('touchstart', handleFlap);
+flapButton.addEventListener('touchend', handleTouchEnd);
+
+if (isMobile) {
+  // Mobile/touch device: Show the flap button and attach touch-based controls
+  flapButton.style.display = 'block';
+  document.body.addEventListener('touchstart', handleStartGame);
+} else {
+  // Laptop/desktop: Attach "Press Enter" event for starting the game
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && game_state !== 'Play') {
+      handleStartGame();
+    }
+  });
+}
+
 
 document.addEventListener('keydown', (e) => {
     
