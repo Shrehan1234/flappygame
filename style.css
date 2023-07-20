@@ -83,3 +83,17 @@
 		width: 14vw;
 	}
 }
+#flapButton {
+	/* Add your custom styles for the flap button */
+	/* For example: */
+	position: absolute;
+	bottom: 10%; /* Adjust the position as per your preference */
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;
+	height: 40px;
+	background-color: #333;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+  }

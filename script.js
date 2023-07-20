@@ -1,4 +1,4 @@
-let move_speed = 3, grativy = 0.5;
+let move_speed = 5, grativy = 1;
 let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
 let sound_point = new Audio('sounds effect/point.mp3');
@@ -65,6 +65,7 @@ function play(){
         });
         requestAnimationFrame(move);
     }
+    
     requestAnimationFrame(move);
 
     let bird_dy = 0;
@@ -126,4 +127,20 @@ function play(){
         requestAnimationFrame(create_pipe);
     }
     requestAnimationFrame(create_pipe);
+    function handleFlap() {
+        bird_dy = -7.6; // Give the bird an upward velocity when it flaps
+        img.src = 'images/Bird-2.png';
+      }
+      
+      function handleTouchEnd() {
+        img.src = 'images/Bird.png'; // Reset the bird's appearance when touch ends
+      }
+      
+      const flapButton = document.getElementById('flapButton');
+      flapButton.addEventListener('touchstart', handleFlap);
+      flapButton.addEventListener('touchend', handleTouchEnd);
+      
+      const canvas = document.getElementById('gameCanvas');
+      canvas.addEventListener('touchstart', handleFlap);
+      canvas.addEventListener('touchend', handleTouchEnd);
 }
