@@ -92,8 +92,29 @@
 	transform: translateX(-50%);
 	width: 100px;
 	height: 40px;
-	background-color: #333;
+	background-color: #00FFFF;
 	color: white;
 	font-size: 16px;
 	cursor: pointer;
   }
+@media (max-width: 767px) {
+  #flapButton {
+    /* Add your mobile-specific styles here */
+    /* For example: */
+    position: absolute;
+    bottom: 10%; /* Adjust the position as per your preference */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+  }
+}
+
+/* Styles for PC screens */
+@media (min-width: 768px) {
+  #flapButton {
+    /* Add your PC-specific styles here */
+    /* For example: */
+    display: none; /* Hide the button on PC, it will be triggered with keyboard controls */
+  }
+}
